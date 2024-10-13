@@ -18,6 +18,10 @@ class DBConfig(BaseModel):
     password: str
 
 
+class WeatherAPIConfig(BaseModel):
+    key: str
+
+
 class LoggingConfig(BaseModel):
     level: str
 
@@ -25,6 +29,7 @@ class LoggingConfig(BaseModel):
 class Config(BaseModel):
     bot: BotConfig
     db: DBConfig
+    weather_api: WeatherAPIConfig
     logging: LoggingConfig
 
     @classmethod
@@ -34,5 +39,6 @@ class Config(BaseModel):
         return Config(
             bot=BotConfig(**data['bot']),
             db=DBConfig(**data['db']),
+            weather_api=WeatherAPIConfig(**data['weather_api']),
             logging=LoggingConfig(**data['logging'])
         )
