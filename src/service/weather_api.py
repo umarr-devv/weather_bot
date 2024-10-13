@@ -3,6 +3,17 @@ import aiohttp
 
 class WeatherAPIClient:
     url = 'http://api.openweathermap.org/data/2.5/weather'
+    weather_emoji = {
+        "01": "☀️",
+        "02": "🌤️",
+        "03": "🌥️",
+        "04": "☁️",
+        "09": "🌧️",
+        "10": "🌦️",
+        "11": "🌩️",
+        "13": "❄️",
+        "50": "🌫️"
+    }
 
     @staticmethod
     async def get_response(url: str, params: dict) -> aiohttp.ClientResponse | None:
@@ -17,3 +28,7 @@ class WeatherAPIClient:
         return await WeatherAPIClient.get_response(WeatherAPIClient.url, params={
             'appId': key, 'q': city, 'units': units, 'lang': lang
         })
+
+    @staticmethod
+    def get_weather_emoji(weather_code: str) -> str:
+        return WeatherAPIClient.weather_emoji[weather_code[:2:]]
