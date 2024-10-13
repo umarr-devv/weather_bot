@@ -6,5 +6,7 @@ db:
     host: ''
     user: ''
     password: ''
+weather_api:
+    key: ''
 logging:
     level: 'INFO'
