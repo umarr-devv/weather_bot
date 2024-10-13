@@ -6,5 +6,7 @@ router = Router()
 
 @router.message(CommandStart())
 async def on_start(message: types.Message, command: CommandObject):
-    text = f'Добро пожаловать, {message.from_user.full_name}'
+    text = f'👋 Привет, <b>{message.from_user.first_name}</b>!\n' \
+           'Я 🤖 бот, который поможет узнать погоду в любом городе.\n' \
+           'Просто напишите название города, и я покажу вам текущую погоду. Давайте начнем! ☀️🌧️🌍'
     await message.answer(text=text)
